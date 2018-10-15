@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'rest_framework',   
+    'rest_framework',
     'collect',
     'bootstrap4',
     'django.contrib.admin',
@@ -78,8 +78,11 @@ WSGI_APPLICATION = 'Awwwards.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'awards',
+        'USER': 'renegade',
+        'PASSWORD': 'awards',
+
     }
 }
 
@@ -102,6 +105,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+UPLOADCARE = {
+    'pub_key': '12fe5e716ff00549ddbc',
+    'secret': '1b403e13b11fc27f6975',
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/

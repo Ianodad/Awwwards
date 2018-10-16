@@ -33,11 +33,12 @@ post_save.connect(post_save_user_model_receiver,
 
 
 class Projects(models.Model):
-    title = models.CharField(Profile, on_delete=models.CASCADE)
+    title = models.CharField(User, max_length=200)
     image = ImageField(
         manual_crop='1280x720')
     decription = models.TextField(max_length=200)
     link = models.URLField(null=True, blank=True, default='')
 
+
 class Categories(models.Model):
-    name = models.ManyToManyField(pro)
+    name = models.ManyToManyField(Projects)

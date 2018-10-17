@@ -38,6 +38,21 @@ class Projects(models.Model):
         manual_crop='1280x720')
     decription = models.TextField(max_length=200)
     link = models.URLField(null=True, blank=True, default='')
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, null=True, related_name="images")
+
+    @classmethod
+    def get_all_projects():
+        projects = Projects.objects.all()
+        return projects
+
+    @classmethod
+    def get_post(cls, id):
+        projects = Projects.objects.filter(user=id)
+        return projects
+
+    class Meta:
+        ordering = ['-id']
 
 
 class Categories(models.Model):

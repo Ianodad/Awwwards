@@ -11,10 +11,12 @@ def home(request):
     current_user = request.user
 
     form = ProjectsForm()
+
     return render(request, 'pages/home.html', {"word": word})
 
 
 def submission(request):
+    current_user = request.user
 
     if request.method == 'POST':
         form = ProjectsForm(request.POST)
@@ -29,6 +31,7 @@ def submission(request):
 
 
 def profile(request):
+    current_user = request.user
 
     if request.method == 'POST':
         form = ProfileForm(request.POST)
@@ -39,4 +42,5 @@ def profile(request):
             return redirect('profile')
     else:
         form = ProfileForm()
-    return render(request, 'pages/profile.html'{"form": form})
+
+    return render(request, 'pages/profile.html', {"form": form})

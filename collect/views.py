@@ -1,6 +1,7 @@
 from urllib import request
+from .models import Profile, Projects, Categories
 
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from .forms import ProfileForm, ProjectsForm
 
 # Create your views here.
@@ -10,9 +11,9 @@ def home(request):
     word = "This is a house"
     current_user = request.user
 
-    form = ProjectsForm()
+    projects = Projects.get_all_projects()
 
-    return render(request, 'pages/home.html', {"word": word})
+    return render(request, 'pages/home.html', {"word": word, "projects": projects})
 
 
 def submission(request):
@@ -22,7 +23,7 @@ def submission(request):
         form = ProjectsForm(request.POST)
         if form.is_valid():
             upload = form.save(commit=False)
-            upload.user = current_user
+            # upload.user = current_user
             upload.save()
             return redirect('home')
     else:
@@ -37,7 +38,7 @@ def profile(request):
         form = ProfileForm(request.POST)
         if form.is_valid():
             upload = form.save(commit=False)
-            upload.user = current_user
+            # upload.user = current_user
             upload.save()
             return redirect('profile')
     else:

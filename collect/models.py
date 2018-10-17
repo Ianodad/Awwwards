@@ -42,7 +42,7 @@ class Projects(models.Model):
         User, on_delete=models.CASCADE, null=True, related_name="images")
 
     @classmethod
-    def get_all_projects():
+    def get_all_projects(cls):
         projects = Projects.objects.all()
         return projects
 

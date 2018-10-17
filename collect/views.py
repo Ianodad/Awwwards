@@ -23,7 +23,7 @@ def submission(request):
         form = ProjectsForm(request.POST)
         if form.is_valid():
             upload = form.save(commit=False)
-            # upload.user = current_user
+            upload.user = current_user
             upload.save()
             return redirect('home')
     else:
@@ -33,15 +33,22 @@ def submission(request):
 
 def profile(request):
     current_user = request.user
+    profile = Profile.objects.get(username=current_user)
 
+    return render(request, 'pages/profile.html', {" current_user": current_user})
+
+
+def add_profile(request):
+    user = request.user
+    # profile=Profile.objects.get(username=user)
     if request.method == 'POST':
         form = ProfileForm(request.POST)
         if form.is_valid():
             upload = form.save(commit=False)
-            # upload.user = current_user
+            upload.username = user
             upload.save()
             return redirect('profile')
     else:
         form = ProfileForm()
 
-    return render(request, 'pages/profile.html', {"form": form})
+    return render(request, 'pages/add_profile.html', {"form": form})

@@ -1,4 +1,6 @@
 {% extends 'pages/base.html'%}
+{% load crispy_forms_tags %}
+
 {% block content %}
 
 <div class="container emp-profile">
@@ -49,10 +51,13 @@
                 </div>
             </div>
             <div class="col-md-2">
-                <input type="submit"
-                       class="profile-edit-btn"
-                       name="btnAddMore"
-                       value="Edit Profile" />
+                <a href="/edit_profile"
+                   class="
+                   btn
+                   btn-outline-success"
+                   role="button"
+                   aria-disabled="true">Edit Profile</a>
+                <a href="/edit_profile">Edit profile</a>
             </div>
         </div>
         <div class="row">

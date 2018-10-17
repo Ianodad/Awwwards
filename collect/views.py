@@ -35,7 +35,7 @@ def profile(request):
     current_user = request.user
     profile = Profile.objects.get(username=current_user)
 
-    return render(request, 'pages/profile.html', {" current_user": current_user})
+    return render(request, 'pages/profile.html', {" current_user": current_user, "profile": profile})
 
 
 def add_profile(request):

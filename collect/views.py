@@ -35,8 +35,9 @@ def submission(request):
 def profile(request):
     current_user = request.user
     profile = Profile.objects.get(username=current_user)
+    projects = Projects.objects.filter(user=current_user)
 
-    return render(request, 'pages/profile.html', {" current_user": current_user, "profile": profile})
+    return render(request, 'pages/profile.html', {" current_user": current_user, "profile": profile, "projects": projects})
 
 
 def add_profile(request):

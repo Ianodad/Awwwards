@@ -63,9 +63,10 @@
             <div class="col-md-4">
                 <div class="profile-work">
                     <p>SITES POSTED LINK</p>
-                    <a href="">Website Link</a><br />
-                    <a href="">Bootsnipp Profile</a><br />
-                    <a href="">Bootply Profile</a>
+                    {% for project in projects %}
+                    <a class="text-uppercase"
+                       href="/project/{{project.id}}">{{project.title}}</a><br />
+                    {% endfor %}
                 </div>
             </div>
             <div class="col-md-8">

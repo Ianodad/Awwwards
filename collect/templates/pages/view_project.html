@@ -3,25 +3,24 @@
 {% block content %}
 <div class="container-fluid">
     <div class="container">
-        <div class="card">
-            <div class="card-body">
-                <img src="{{pro.image}}"
-                     alt="">
-            </div>
+        <div class="pictures">
+            <img src="{{project.image}}"
+                 alt="..."
+                 class="img-thumbnail my-2"
+                 style="width: 80rem; height:45rem">
+            <img src="{{project.image}}"
+                 alt="..."
+                 class="img-thumbnail my-2"
+                 style="width: 80rem; height:45rem">
+            <img src="{{project.image}}"
+                 alt="..."
+                 class="img-thumbnail my-2"
+                 style="width: 80rem; height:45rem">
+
         </div>
-        <div class="card">
-            <div class="card-body">
-                <img src=""
-                     alt="">
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-body">
-                <img src=""
-                     alt="">
-            </div>
-        </div>
-        <div class="more_details">
+
+
+        <div class="more_details d-flex flex-row justify-content-around">
             <div class="details">
                 <ul>
                     <li>Title</li>
@@ -33,8 +32,12 @@
                 </ul>
 
             </div>
-            <div class="ratings">
-
+            <div class="ratings ">
+                <ul>
+                    <li>Design</li>
+                    <li>Usability</li>
+                    <li>Content</li>
+                </ul>
             </div>
         </div>
     </div>

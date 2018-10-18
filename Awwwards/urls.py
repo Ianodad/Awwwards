@@ -20,5 +20,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'', include('collect.urls')),
     url(r'^accounts/', include('registration.backends.simple.urls')),
-    url(r'^api/collect', include('collect.api.url', namespace='api-collect'))
+    url(r'^api/', include('collect.api.urls', namespace='api-collect'))
 ]

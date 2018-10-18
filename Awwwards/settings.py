@@ -32,7 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'crispy_forms',
-    'pyuploadcare.dj',
+    # 'pyuploadcare.dj',
     'rest_framework',
     'collect',
     'bootstrap4',

@@ -1,5 +1,7 @@
 {% extends 'pages/base.html'%}
 
+{% block content %}
+
 <div class="templates d-flex flex-row">
     {% for project in results %}
 
@@ -20,3 +22,4 @@
     </div>
     {% endfor %}
 </div>
+{% endblock content %}

@@ -54,6 +54,9 @@ class Projects(models.Model):
     class Meta:
         ordering = ['-id']
 
+    def __str__(self):
+        return self.title
+
 
 class Categories(models.Model):
     name = models.ManyToManyField(Projects)

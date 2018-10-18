@@ -58,8 +58,10 @@ def add_profile(request):
 def search(request):
 
     query = request.GET.get('q')
-
-    results = Projects.objects.filter(
-        Q(title_icontians=query) | Q(user_icontains=query))
-
-    return render(request, 'pages/search', {'results': results})
+    print(query)
+    if query:
+        results = Projects.objects.filter(
+            Q(title__icontains=query))
+    else:
+        results = Projects.objects.all()
+    return render(request, 'pages/search.html', {'results': results})

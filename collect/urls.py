@@ -7,5 +7,5 @@ urlpatterns = [
     url(r'^sub', submission, name='submission'),
     url(r'^profile', profile, name='profile'),
     url(r'^add_profile', add_profile, name='add_profile'),
-    url(r'^results$', search, name='search')
+    url(r'^search', search, name='search')
 ]

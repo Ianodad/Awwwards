@@ -6,14 +6,14 @@
 <div class="container-fluid">
     <div class="container d-flex flex-column
  justify-content-center">
-        <form class="d-flex flex-column"
-              action="{% url 'submission' %}"
+        <form action="{% url 'submission' %}"
+              method="post"
               method="POST"
               enctype="multipart/form-data">
-            {% csrf_token %} {{ form | crispy }}
+            {% csrf_token %}
+            {{ form | crispy }}
             <input type="submit"
-                   class="btn btn-success btn-sm"
-                   value="POST">
+                   value="Submit">
         </form>
     </div>
 </div>

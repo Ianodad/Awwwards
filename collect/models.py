@@ -19,6 +19,9 @@ class Profile(models.Model):
     bio = models.TextField(default="Tell us more")
     contact = models.CharField(max_length=30)
 
+    def __str__(self):
+        return self.username
+
 
 def post_save_user_model_receiver(sender, instance, created, *args, **kwargs):
     if created:
@@ -36,6 +39,8 @@ class Projects(models.Model):
     title = models.CharField(User, max_length=200)
     image = ImageField(
         manual_crop='1280x720')
+    image2 = ImageField(null=True, manual_crop='1280x720')
+    image3 = ImageField(null=True, manual_crop='1280x720')
     decription = models.TextField(max_length=200)
     link = models.URLField(null=True, blank=True, default='')
     user = models.ForeignKey(

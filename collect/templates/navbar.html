@@ -56,10 +56,21 @@
                 </div>
             </div>
         </form>
-        <ul>
-            <li> <a href="/submit">SUBMIT SITE</a></li>
-            <li>
-                <a href="/profile">{{user}}</a></li>
+        <ul class="">
+            <li class="nav-item">
+                <a class="nav-link"
+                   href="/submit">SUBMIT SITE</a>
+            </li>
         </ul>
+        {% if user.is_authenticated %}
+
+        <ul>
+            <li class="nav-item">
+                <a class="nav-link"
+                   href="/profile">Username : {{user}}</a>
+            </li>
+        </ul>
+        {% endif %}
+
     </div>
 </nav>

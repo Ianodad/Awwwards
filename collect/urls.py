@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from .views import home, submission, profile, add_profile, search
+from .views import home, submission, profile, add_profile, search, view_project
 
 
 urlpatterns = [
@@ -7,5 +7,7 @@ urlpatterns = [
     url(r'^sub', submission, name='submission'),
     url(r'^profile', profile, name='profile'),
     url(r'^add_profile', add_profile, name='add_profile'),
-    url(r'^search', search, name='search')
+    url(r'^search', search, name='search'),
+    url(r'^project/(?P<project_id>[0-9]+)',
+        view_project, name='view_project')
 ]

@@ -65,3 +65,9 @@ def search(request):
     else:
         results = Projects.objects.all()
     return render(request, 'pages/search.html', {'results': results})
+
+
+def view_project(request, project_id):
+    project = Projects.objects.get(id=project_id)
+
+    return render(request, 'pages/view_project.html', {"project": project})

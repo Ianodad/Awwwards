@@ -4,6 +4,7 @@ from .models import Profile, Projects, Categories
 from django.shortcuts import redirect, render
 from .forms import ProfileForm, ProjectsForm
 
+from django.db.models import Q
 # Create your views here.
 
 
@@ -52,3 +53,13 @@ def add_profile(request):
         form = ProfileForm()
 
     return render(request, 'pages/add_profile.html', {"form": form})
+
+
+def search(request):
+
+    query = request.GET.get('q')
+
+    results = Projects.objects.filter(
+        Q(title_icontians=query) | Q(user_icontains=query))
+
+    return render(request, 'pages/search', {'results': results})

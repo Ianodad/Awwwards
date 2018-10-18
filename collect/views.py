@@ -1,6 +1,6 @@
 from urllib import request
 from .models import Profile, Projects, Categories
-
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 from .forms import ProfileForm, ProjectsForm
 
@@ -17,6 +17,7 @@ def home(request):
     return render(request, 'pages/home.html', {"word": word, "projects": projects})
 
 
+@login_required(login_url='/accounts/login/')
 def submission(request):
     current_user = request.user
 
@@ -32,6 +33,7 @@ def submission(request):
     return render(request, 'pages/submit.html', {"form": form})
 
 
+@login_required(login_url='/accounts/login/')
 def profile(request):
     current_user = request.user
     profile = Profile.objects.get(username=current_user)
@@ -40,6 +42,7 @@ def profile(request):
     return render(request, 'pages/profile.html', {" current_user": current_user, "profile": profile, "projects": projects})
 
 
+@login_required(login_url='/accounts/login/')
 def add_profile(request):
     user = request.user
     # profile=Profile.objects.get(username=user)
@@ -56,6 +59,7 @@ def add_profile(request):
     return render(request, 'pages/add_profile.html', {"form": form})
 
 
+@login_required(login_url='/accounts/login/')
 def search(request):
 
     query = request.GET.get('q')
@@ -68,6 +72,7 @@ def search(request):
     return render(request, 'pages/search.html', {'results': results})
 
 
+@login_required(login_url='/accounts/login/')
 def view_project(request, project_id):
     project = Projects.objects.get(id=project_id)
 

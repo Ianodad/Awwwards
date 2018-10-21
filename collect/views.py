@@ -1,7 +1,9 @@
 from urllib import request
+from django.core.exceptions import ObjectDoesNotExist
+
 from .models import Profile, Projects, Categories
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, get_object_or_404
 from .forms import ProfileForm, ProjectsForm
 
 from django.db.models import Q
@@ -36,8 +38,12 @@ def submission(request):
 @login_required(login_url='/accounts/login/')
 def profile(request):
     current_user = request.user
-    profile = Profile.objects.get(username=current_user)
-    projects = Projects.objects.filter(user=current_user)
+
+    try:
+        profile = get_object_or_404(Profile, username=request.user)
+    except ObjectDoesNotExist:
+        return redirect('home')
+        print("looking"+profile.profile_picture)
 
     return render(request, 'pages/profile.html', {" current_user": current_user, "profile": profile, "projects": projects})
 

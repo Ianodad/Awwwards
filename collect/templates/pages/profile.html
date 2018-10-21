@@ -4,6 +4,8 @@
 {% block content %}
 
 <div class="container emp-profile">
+    {% if profile.image %}
+
     <form method="post">
         <div class="row">
             <div class="col-md-4">
@@ -109,5 +111,15 @@
             </div>
         </div>
     </form>
+    {% else %}
+    <div class="col-md-2">
+        <a href="/edit_profile"
+           class="
+                   btn
+                   btn-outline-success"
+           role="button"
+           aria-disabled="true">Add Profile</a>
+    </div>
+    {% endif%}
 </div>
 {% endblock content %}

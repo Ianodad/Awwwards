@@ -40,23 +40,35 @@ def profile(request):
     current_user = request.user
 
     try:
-        profile = get_object_or_404(Profile, username=request.user)
-    except ObjectDoesNotExist:
-        return redirect('home')
-        print("looking"+profile.profile_picture)
+        profile = Profile.objects.get(username=current_user)
+        print(profile)
 
-    return render(request, 'pages/profile.html', {" current_user": current_user, "profile": profile, "projects": projects})
+    except Exception as e:
+        profile = None
+        print(e)
+        return redirect('add_profile')
+
+    context = {" current_user": current_user,
+               "profile": profile,
+               #    "projects": projects
+               }
+
+    return render(request, 'pages/profile.html', context)
 
 
 @login_required(login_url='/accounts/login/')
 def add_profile(request):
-    user = request.user
-    # profile=Profile.objects.get(username=user)
+    current_user = request.user
+    try:
+        profile = Profile.objects.get(username=current_user)
+        return redirect('profile')
+    except:
+        pass
     if request.method == 'POST':
         form = ProfileForm(request.POST)
         if form.is_valid():
             upload = form.save(commit=False)
-            upload.username = user
+            upload.username = current_user
             upload.save()
             return redirect('profile')
     else:

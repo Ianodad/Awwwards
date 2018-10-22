@@ -4,7 +4,6 @@
 {% block content %}
 
 <div class="container emp-profile">
-    {% if profile.image %}
 
     <form method="post">
         <div class="row">
@@ -22,7 +21,7 @@
             <div class="col-md-6">
                 <div class="profile-head">
                     <h5>
-                        {{profile.username}}
+                        {{profile.username.username}}
                     </h5>
                     <p class="proile-rating">RANKINGS : <span>8/10</span></p>
                     <ul class="nav nav-tabs"
@@ -111,15 +110,13 @@
             </div>
         </div>
     </form>
-    {% else %}
     <div class="col-md-2">
-        <a href="/edit_profile"
+        <a href="/add_profile"
            class="
                    btn
                    btn-outline-success"
            role="button"
            aria-disabled="true">Add Profile</a>
     </div>
-    {% endif%}
 </div>
 {% endblock content %}

@@ -20,7 +20,7 @@ class Profile(models.Model):
     contact = models.CharField(max_length=30)
 
     def __str__(self):
-        return self.username
+        return self.username.username
 
 
 def post_save_user_model_receiver(sender, instance, created, *args, **kwargs):

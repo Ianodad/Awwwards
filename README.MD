@@ -24,7 +24,7 @@ As a user I would like:
 ### Prerequisites
 
  * Internet access
- * git clone https://github.com/ianodad/awwards.git
+ * git clone https://github.com/ianodad/Awwards.git
  * cd Gallery
 
 #### To install a virtual environment
